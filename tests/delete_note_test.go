@@ -44,7 +44,7 @@ func testNoteDeletion(t *testing.T) {
 	postDeletionTime := time.Now()
 	t.Logf("Note deletion attempted at: %v", postDeletionTime)
 
-	dsn := "host=example user=example password=example dbname=example sslmode=disable"
+	dsn := "host=example-db user=example password=example dbname=example sslmode=disable"
 	db, err := sql.Open("postgres", dsn)
 	require.NoError(t, err)
 	defer db.Close()

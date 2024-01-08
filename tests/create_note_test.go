@@ -77,7 +77,7 @@ func testNoteCreation(t *testing.T) {
 	t.Log("Response Status:", resp.Status)
 	t.Log("Created note ID:", list)
 
-	dsn := "host=example user=example password=example dbname=example sslmode=disable"
+	dsn := "host=example-db user=example password=example dbname=example sslmode=disable"
 
 	db, err := sql.Open("postgres", dsn)
 	require.NoError(t, err)
