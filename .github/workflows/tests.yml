@@ -30,4 +30,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/gistributed-lab-testing/integration-tests:latest
+        tags: ghcr.io/distributed-lab-testing/integration-tests:latest
