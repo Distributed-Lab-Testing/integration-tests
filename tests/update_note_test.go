@@ -44,7 +44,7 @@ func updateNote(config config.TestsConfig, noteID, newContent string) (response 
 }
 
 func testNoteUpdating(t *testing.T) {
-	dsn := "host=upstream user=example password=example dbname=example sslmode=disable"
+	dsn := "host=upstream port=5433 user=example password=example dbname=example sslmode=disable"
 	db, err := sql.Open("postgres", dsn)
 	require.NoError(t, err)
 	defer db.Close()
