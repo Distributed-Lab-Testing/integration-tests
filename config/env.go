@@ -9,7 +9,7 @@ import (
 
 const (
 	baseUrlEnvName = "BASE_URL"
-	baseUrlDefault = "http://upstream:80/_/api"
+	baseUrlDefault = "upstream:80/_/api"
 )
 
 var (
