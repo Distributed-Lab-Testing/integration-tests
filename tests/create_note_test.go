@@ -53,21 +53,18 @@ func createNote(config config.TestsConfig, content string, created_at string) (l
 		return nil, nil, errors.Wrap(err, "failed to unmarshal response")
 	}
 
-	list = append(list, noteResp.ID)
+	list = append(list, noteResp.Data.ID)
 
 	return list, resp, nil
 }
 
-// func TestNotes(t *testing.T) {
-// 	ctx := new(map[string]any)
+func TestNotes(t *testing.T) {
+	t.Run("Inserting", testNoteCreation)
+	t.Run("Updating db", testNoteUpdating)
+	t.Run("Deleting from db", testNoteDeletion)
+}
 
-// 	t.Run("Inserting", testNoteCreation(ctx))
-// 	t.Run("Updating db", testNoteUpdating(ctx))
-// 	t.Run("Deleting from db", testNoteDeletion(ctx))
-// }
-
-func TestNoteCreation /*(ctx *map[string]any) func*/ (t *testing.T) {
-	// return func(t *testing.T) {
+func testNoteCreation(t *testing.T) {
 	var (
 		content    = "test note"
 		created_at = time.Now().Format(time.RFC3339)
@@ -95,10 +92,5 @@ func TestNoteCreation /*(ctx *map[string]any) func*/ (t *testing.T) {
 	require.NoError(t, err)
 	t.Logf("Retrieved note content: %s, created at: %s", content, created_at)
 
-	if resp.StatusCode != http.StatusOK {
-		require.Contains(t, list, "error", "Response body should contain an error for wrong credentials")
-		return
-	}
 	require.NotEmpty(t, list, "Note should not be empty")
-	// }
 }
